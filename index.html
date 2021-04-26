@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Poke Names</title>
+</head>
+<body>
+<main>
+</main>
+<script>
+    async function getPoke(){
+        try {
+            const response = await fetch("http://localhost:8080/")
+            const data = await response.json()
+            console.log(data)
+            showPoke(data)
+        } catch (error) {
+    
+        }
+    }
+
+    function showPoke(pokedex){
+        let output = ""
+        for (const pokemon of pokedex) {
+            output += `<li>${pokemon.name}</li>`
+        }
+        document.querySelector("main").innerHTML = output
+    }
+
+    getPoke()
+</script>
+</body>
+</html>
